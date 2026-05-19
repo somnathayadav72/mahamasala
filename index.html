@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satyasee - Rooted in India</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Category card icons (sprite) -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+        <!-- All Masala: mortar bowl with herbs sprouting + small pestle -->
+        <symbol id="cat-all-masala" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 30 Q22 22 24 14"/>
+            <path d="M32 30 Q32 18 34 10"/>
+            <path d="M40 30 Q42 22 40 14"/>
+            <path d="M22 18 Q19 18 19 15"/>
+            <path d="M34 12 Q37 12 37 9"/>
+            <path d="M40 18 Q43 18 43 15"/>
+            <ellipse cx="32" cy="32" rx="18" ry="3.5"/>
+            <path d="M14 32 Q14 50 32 50 Q50 50 50 32"/>
+            <line x1="46" y1="14" x2="40" y2="22"/>
+            <circle cx="48" cy="11" r="2.5"/>
+            <circle cx="16" cy="22" r="1" fill="currentColor"/>
+            <circle cx="50" cy="26" r="1" fill="currentColor"/>
+        </symbol>
+
+        <!-- Turmeric: knobby root cluster -->
+        <symbol id="cat-turmeric" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 38 Q12 32 16 28 Q22 24 28 28 Q34 24 40 28 Q46 26 50 32 Q54 38 50 44 Q46 48 38 46 Q30 50 22 46 Q14 44 16 38 Z"/>
+            <path d="M22 26 Q20 20 24 16"/>
+            <path d="M32 26 Q32 18 36 16"/>
+            <path d="M44 28 Q46 22 50 22"/>
+            <path d="M22 36 Q24 38 22 42"/>
+            <path d="M32 36 Q34 40 32 44"/>
+            <path d="M42 36 Q44 40 42 42"/>
+        </symbol>
+
+        <!-- Red Chilli: horizontal pepper with stem & calyx -->
+        <symbol id="cat-chilli" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 38 Q22 30 34 32 Q46 34 52 40 Q52 46 44 46 Q30 48 18 42 Q12 40 14 38 Z"/>
+            <path d="M22 38 Q32 36 44 40"/>
+            <path d="M14 38 Q10 34 10 28"/>
+            <path d="M10 28 Q14 28 16 30"/>
+            <path d="M10 28 Q8 32 12 34"/>
+        </symbol>
+
+        <!-- Coriander: sprig with multi-level rounded leaves -->
+        <symbol id="cat-coriander" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 54 V20"/>
+            <path d="M32 48 Q26 44 20 48"/>
+            <path d="M32 48 Q38 44 44 48"/>
+            <path d="M32 38 Q24 32 18 36 Q20 42 32 38"/>
+            <path d="M32 38 Q40 32 46 36 Q44 42 32 38"/>
+            <path d="M32 28 Q28 24 24 26 Q26 30 32 28"/>
+            <path d="M32 28 Q36 24 40 26 Q38 30 32 28"/>
+            <path d="M32 22 Q30 18 32 14 Q34 18 32 22"/>
+        </symbol>
+
+        <!-- Garam Masala: glass jar with star anise + spice seeds + steam -->
+        <symbol id="cat-garam" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 8 Q26 6 28 4"/>
+            <path d="M34 8 Q36 6 34 4"/>
+            <rect x="24" y="12" width="16" height="4" rx="1"/>
+            <path d="M26 16 H38"/>
+            <path d="M22 20 Q22 18 24 18 H40 Q42 18 42 20 V52 Q42 54 40 54 H24 Q22 54 22 52 Z"/>
+            <path d="M22 28 H42"/>
+            <circle cx="30" cy="40" r="3"/>
+            <line x1="30" y1="36.5" x2="30" y2="34.5"/>
+            <line x1="30" y1="43.5" x2="30" y2="45.5"/>
+            <line x1="26.5" y1="40" x2="24.5" y2="40"/>
+            <line x1="33.5" y1="40" x2="35.5" y2="40"/>
+            <line x1="27.5" y1="37.5" x2="26" y2="36"/>
+            <line x1="32.5" y1="37.5" x2="34" y2="36"/>
+            <line x1="27.5" y1="42.5" x2="26" y2="44"/>
+            <line x1="32.5" y1="42.5" x2="34" y2="44"/>
+            <circle cx="36" cy="34" r="0.9" fill="currentColor"/>
+            <circle cx="38" cy="46" r="0.9" fill="currentColor"/>
+            <circle cx="26" cy="48" r="0.9" fill="currentColor"/>
+        </symbol>
+
+        <!-- Biryani Masala: bowl of rice grains with steam -->
+        <symbol id="cat-biryani" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 18 Q20 14 22 10"/>
+            <path d="M32 16 Q30 12 32 8"/>
+            <path d="M42 18 Q44 14 42 10"/>
+            <ellipse cx="32" cy="30" rx="22" ry="3.5"/>
+            <path d="M10 30 Q10 50 32 50 Q54 50 54 30"/>
+            <ellipse cx="20" cy="34" rx="2.2" ry="1" transform="rotate(-20 20 34)"/>
+            <ellipse cx="28" cy="34" rx="2.2" ry="1" transform="rotate(15 28 34)"/>
+            <ellipse cx="36" cy="34" rx="2.2" ry="1" transform="rotate(-15 36 34)"/>
+            <ellipse cx="44" cy="34" rx="2.2" ry="1" transform="rotate(20 44 34)"/>
+            <ellipse cx="24" cy="40" rx="2.2" ry="1" transform="rotate(10 24 40)"/>
+            <ellipse cx="32" cy="40" rx="2.2" ry="1" transform="rotate(-10 32 40)"/>
+            <ellipse cx="40" cy="40" rx="2.2" ry="1" transform="rotate(15 40 40)"/>
+        </symbol>
+
+        <!-- Kitchen King: covered teapot with handle, spout, lid + steam -->
+        <symbol id="cat-kitchen-king" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 14 Q26 10 28 6"/>
+            <path d="M36 14 Q38 10 36 6"/>
+            <circle cx="32" cy="18" r="1.8"/>
+            <line x1="32" y1="20" x2="32" y2="22"/>
+            <path d="M22 24 H42"/>
+            <path d="M20 28 H44 V46 Q44 50 40 50 H24 Q20 50 20 46 Z"/>
+            <path d="M44 30 Q52 30 52 24"/>
+            <path d="M20 32 Q12 32 12 40 Q12 46 18 46"/>
+            <path d="M22 36 H42"/>
+        </symbol>
+
+        <!-- Chaat Masala: bowl with rounded balls (laddu/golgappa) + steam -->
+        <symbol id="cat-chaat" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 18 Q20 14 22 10"/>
+            <path d="M32 16 Q30 12 32 8"/>
+            <path d="M42 18 Q44 14 42 10"/>
+            <ellipse cx="32" cy="30" rx="22" ry="3.5"/>
+            <path d="M10 30 Q10 50 32 50 Q54 50 54 30"/>
+            <circle cx="22" cy="32" r="3.5"/>
+            <circle cx="32" cy="30" r="3.5"/>
+            <circle cx="42" cy="32" r="3.5"/>
+            <circle cx="27" cy="38" r="3"/>
+            <circle cx="37" cy="38" r="3"/>
+            <circle cx="22" cy="32" r="0.6" fill="currentColor"/>
+            <circle cx="32" cy="30" r="0.6" fill="currentColor"/>
+            <circle cx="42" cy="32" r="0.6" fill="currentColor"/>
+        </symbol>
+
+        <!-- Sambhar Masala: bowl of dal with surface ripples + steam -->
+        <symbol id="cat-sambhar" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 18 Q20 14 22 10"/>
+            <path d="M32 16 Q30 12 32 8"/>
+            <path d="M42 18 Q44 14 42 10"/>
+            <ellipse cx="32" cy="30" rx="22" ry="3.5"/>
+            <path d="M10 30 Q10 50 32 50 Q54 50 54 30"/>
+            <path d="M14 36 Q22 34 30 36 Q38 34 46 36 Q50 35 52 36"/>
+            <path d="M14 42 Q22 40 30 42 Q38 40 46 42"/>
+            <circle cx="22" cy="38" r="1" fill="currentColor"/>
+            <circle cx="34" cy="40" r="1" fill="currentColor"/>
+            <circle cx="44" cy="38" r="1" fill="currentColor"/>
+        </symbol>
+
+        <!-- Herbs & More: mint sprig with paired rounded leaves -->
+        <symbol id="cat-herbs" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 54 V18"/>
+            <path d="M32 44 Q22 38 16 44 Q18 50 32 46"/>
+            <path d="M22 41 Q26 44 30 45"/>
+            <path d="M32 44 Q42 38 48 44 Q46 50 32 46"/>
+            <path d="M42 41 Q38 44 34 45"/>
+            <path d="M32 32 Q24 28 20 32 Q22 38 32 34"/>
+            <path d="M32 32 Q40 28 44 32 Q42 38 32 34"/>
+            <path d="M32 22 Q28 18 32 14 Q36 18 32 22"/>
+            <line x1="32" y1="20" x2="32" y2="16"/>
+        </symbol>
+    </svg>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13"/>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+        </svg>
+        <span>FREE SHIPPING on orders above ₹499</span>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span></button>
+        <a href="index.html" class="navbar-logo">
+            <svg class="logo-leaves" viewBox="0 0 60 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 14 Q24 6 28 8 Q26 14 22 14Z" fill="#e8734a"/>
+                <path d="M28 12 Q32 4 36 8 Q34 14 28 12Z" fill="#f4a574"/>
+                <path d="M36 12 Q38 4 42 8 Q40 14 36 12Z" fill="#7a9e6b"/>
+            </svg>
+            <span class="brand-name">Satyasee</span>
+            <span class="brand-tagline">✦ ROOTED IN INDIA ✦</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+            <a href="#" aria-label="Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </a>
+            <a href="#" id="logoutBtn" aria-label="Logout" title="Logout">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </a>
+            <a href="#" aria-label="Cart" class="cart-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span class="cart-badge">2</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Decorative blobs -->
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <h1>Everyday <br>masalas, <br><em>reimagined.</em></h1>
+                <svg class="squiggle" viewBox="0 0 100 12" fill="none">
+                    <path d="M2 6c10-8 20 8 30 0s20 8 30 0s15 8 16 0s15 8 20 0" stroke="#e8734a" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                <p>Authentic Indian spices, freshly ground <br>for vibrant flavours in every meal.</p>
+                <a href="shop.html" class="btn-primary">
+                    Shop Spices
+                    <span class="arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </span>
+                </a>
+                <div class="usp-badges">
+                    <div class="usp-badge">
+                        <div class="icon" style="background: #e8f0e3;">
+                            <!-- Lucide Leaf -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96c1 6.13.43 11.42-3.13 14.83A7 7 0 0 1 11 20z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
+                        </div>
+                        <h4>100%<br>Natural</h4>
+                    </div>
+                    <div class="usp-badge">
+                        <div class="icon" style="background: #fde8d8;">
+                            <!-- Lucide Mortar Pestle -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#e8734a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18l-2 8H5l-2-8z"/><path d="M12 11V4"/><path d="M9 4h6"/><path d="M14 7l2-3"/></svg>
+                        </div>
+                        <h4>Freshly<br>Ground</h4>
+                    </div>
+                    <div class="usp-badge">
+                        <div class="icon" style="background: #f3eefa;">
+                            <!-- Lucide Sprout -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#9b7ec8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
+                        </div>
+                        <h4>No Added<br>Preservatives</h4>
+                    </div>
+                    <div class="usp-badge">
+                        <div class="icon" style="background: #fef3d7;">
+                            <!-- Lucide Map Pin -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <h4>Sourced<br>from India</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-visual-glow" aria-hidden="true"></div>
+                <div class="hero-visual-ring" aria-hidden="true"></div>
+                <div class="hero-visual-frame">
+                    <img src="images/hero_image.png" alt="Satyasee spices — turmeric, chilli, coriander and garam masala" class="hero-img" width="620" height="465" loading="eager" decoding="async">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop by Category -->
+    <section class="home-categories-section" id="shop-by-category">
+        <div class="cat-blob cat-blob-1" aria-hidden="true"></div>
+        <div class="cat-blob cat-blob-2" aria-hidden="true"></div>
+        <div class="cat-blob cat-blob-3" aria-hidden="true"></div>
+        <div class="cat-blob cat-blob-4" aria-hidden="true"></div>
+
+        <img src="images/branches.png" alt="" class="branch-decor branch-decor-tr" aria-hidden="true">
+        <img src="images/branches.png" alt="" class="branch-decor branch-decor-bl" aria-hidden="true">
+
+        <div class="container">
+            <header class="home-categories-header">
+                <p class="cat-range-label">
+                    <svg class="cat-range-leaf" viewBox="0 0 24 16" fill="none" aria-hidden="true"><path d="M2 12 Q6 4 12 8 Q16 12 22 6" stroke="#7a9e6b" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    EXPLORE OUR RANGE
+                    <svg class="cat-range-leaf cat-range-leaf-r" viewBox="0 0 24 16" fill="none" aria-hidden="true"><path d="M2 12 Q6 4 12 8 Q16 12 22 6" stroke="#7a9e6b" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </p>
+                <h2 class="home-cat-title">Shop by Category</h2>
+                <svg class="home-cat-squiggle" viewBox="0 0 100 12" fill="none" aria-hidden="true">
+                    <path d="M2 6c10-8 20 8 30 0s20 8 30 0s15 8 16 0s15 8 20 0" stroke="#e8734a" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                <p class="home-cat-subtitle">Find the perfect masala for every meal and mood.</p>
+            </header>
+
+            <div class="category-layout">
+                <article class="category-featured-banner">
+                    <img src="images/branches.png" alt="" class="branch-decor branch-decor-banner" aria-hidden="true">
+                    <div class="category-featured-copy">
+                        <p class="category-featured-label"><span class="spark">✦</span> Best for</p>
+                        <h3 class="category-featured-title"><em>everyday<br>cooking</em></h3>
+                        <svg class="category-featured-squiggle" viewBox="0 0 100 12" fill="none" aria-hidden="true">
+                            <path d="M2 6c10-8 20 8 30 0s20 8 30 0s15 8 16 0s15 8 20 0" stroke="#e8734a" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                        <p class="category-featured-desc">Handpicked spices,<br>flavour in every pinch.</p>
+                        <a href="categories.html" class="btn-primary category-featured-btn">
+                            Browse Categories
+                            <span class="arrow">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="category-featured-visual">
+                        <img src="images/satyasee-spice-pouches-turmeric-chilli-coriander.png" alt="Satyasee turmeric, red chilli and coriander spice pouches" class="category-featured-img" width="520" height="390" loading="lazy" decoding="async">
+                    </div>
+                </article>
+
+                <a href="shop.html" class="category-card">
+                    <div class="cat-icon-wrap cat-icon-wrap--gold"><svg class="cat-svg" viewBox="0 0 64 64" aria-hidden="true"><use href="#cat-turmeric"/></svg></div>
+                    <h4 class="cat-label">Turmeric</h4>
+                    <span class="cat-go-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+                </a>
+                <a href="shop.html" class="category-card">
+                    <div class="cat-icon-wrap cat-icon-wrap--red"><svg class="cat-svg" viewBox="0 0 64 64" aria-hidden="true"><use href="#cat-chilli"/></svg></div>
+                    <h4 class="cat-label">Red Chilli</h4>
+                    <span class="cat-go-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+                </a>
+                <a href="shop.html" class="category-card">
+                    <div class="cat-icon-wrap cat-icon-wrap--green"><svg class="cat-svg" viewBox="0 0 64 64" aria-hidden="true"><use href="#cat-coriander"/></svg></div>
+                    <h4 class="cat-label">Coriander</h4>
+                    <span class="cat-go-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+                </a>
+                <a href="shop.html" class="category-card">
+                    <div class="cat-icon-wrap cat-icon-wrap--lavender"><svg class="cat-svg" viewBox="0 0 64 64" aria-hidden="true"><use href="#cat-garam"/></svg></div>
+                    <h4 class="cat-label">Garam Masala</h4>
+                    <span class="cat-go-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+                </a>
+                <a href="shop.html" class="category-card">
+                    <div class="cat-icon-wrap cat-icon-wrap--orange"><svg class="cat-svg" viewBox="0 0 64 64" aria-hidden="true"><use href="#cat-biryani"/></svg></div>
+                    <h4 class="cat-label">Biryani Masala</h4>
+                    <span class="cat-go-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+                </a>
+                <a href="shop.html" class="category-card">
+                    <div class="cat-icon-wrap cat-icon-wrap--peach"><svg class="cat-svg" viewBox="0 0 64 64" aria-hidden="true"><use href="#cat-kitchen-king"/></svg></div>
+                    <h4 class="cat-label">Kitchen King</h4>
+                    <span class="cat-go-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+                </a>
+                <a href="shop.html" class="category-card">
+                    <div class="cat-icon-wrap cat-icon-wrap--pink"><svg class="cat-svg" viewBox="0 0 64 64" aria-hidden="true"><use href="#cat-chaat"/></svg></div>
+                    <h4 class="cat-label">Chaat Masala</h4>
+                    <span class="cat-go-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+                </a>
+                <a href="shop.html" class="category-card">
+                    <div class="cat-icon-wrap cat-icon-wrap--gold"><svg class="cat-svg" viewBox="0 0 64 64" aria-hidden="true"><use href="#cat-sambhar"/></svg></div>
+                    <h4 class="cat-label">Sambhar Masala</h4>
+                    <span class="cat-go-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+                </a>
+                <a href="shop.html" class="category-card">
+                    <div class="cat-icon-wrap cat-icon-wrap--green"><svg class="cat-svg" viewBox="0 0 64 64" aria-hidden="true"><use href="#cat-herbs"/></svg></div>
+                    <h4 class="cat-label">Herbs &amp; More</h4>
+                    <span class="cat-go-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="trust-bar trust-bar-categories">
+            <div class="container">
+                <div class="trust-item">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e6b" stroke-width="1.8"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96c1 6.13.43 11.42-3.13 14.83A7 7 0 0 1 11 20z"/></svg>
+                    </div>
+                    <div><h4>100% Natural</h4><p>No Preservatives</p></div>
+                </div>
+                <div class="trust-item">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#e8734a" stroke-width="1.8"><path d="M3 11h18l-2 8H5l-2-8z"/><path d="M12 11V4"/></svg>
+                    </div>
+                    <div><h4>Finest Quality</h4><p>Handpicked</p></div>
+                </div>
+                <div class="trust-item">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.8"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div><h4>Sourced from India</h4><p>Trusted Farmers</p></div>
+                </div>
+                <div class="trust-item">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#9b7ec8" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
+                    <div><h4>Freshly Packed</h4><p>With Care</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Masalas Section -->
+    <section class="signature-section">
+        <img src="images/branches.png" alt="" class="branch-decor branch-decor-tr" aria-hidden="true">
+        <img src="images/branches.png" alt="" class="branch-decor branch-decor-bl" aria-hidden="true">
+
+        <svg class="signature-leaf signature-leaf-1" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4 Q30 10 28 24 Q20 36 12 24 Q10 10 20 4Z" fill="#e8734a" opacity="0.25"/></svg>
+        <svg class="signature-leaf signature-leaf-2" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4 Q30 10 28 24 Q20 36 12 24 Q10 10 20 4Z" fill="#f4a574" opacity="0.2"/></svg>
+
+        <div class="container">
+            <header class="signature-header">
+                <p class="signature-subtitle">✦ PURE SPICES, PERFECTLY CRAFTED ✦</p>
+                <h2 class="signature-title">Our Signature Masalas</h2>
+                <p class="signature-desc">Handpicked spices, freshly ground in small batches to deliver unmatched flavour, aroma, and purity in every meal.</p>
+            </header>
+
+            <div class="signature-image-wrap">
+                <img src="images/signature.png" alt="Satyasee signature masala range — turmeric, red chilli, coriander, garam masala, kitchen king and biryani masala pouches" class="signature-img" width="1200" height="500" loading="lazy" decoding="async">
+            </div>
+
+            <div class="signature-features">
+                <div class="signature-feature">
+                    <div class="signature-feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="#c46840" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M24 6 Q20 10 18 16"/>
+                            <path d="M24 6 Q28 10 30 16"/>
+                            <path d="M21 14 Q18 14 17 11"/>
+                            <path d="M27 14 Q30 14 31 11"/>
+                            <ellipse cx="24" cy="22" rx="14" ry="3"/>
+                            <path d="M10 22 Q10 38 24 38 Q38 38 38 22"/>
+                            <path d="M34 10 L30 16"/>
+                            <circle cx="36" cy="8" r="2"/>
+                        </svg>
+                    </div>
+                    <div class="signature-feature-text">
+                        <h4>Freshly Ground</h4>
+                        <p>Ground in small batches to lock in natural oils and intense flavour.</p>
+                    </div>
+                </div>
+                <div class="signature-feature">
+                    <div class="signature-feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="#c46840" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M24 4 L24 8"/>
+                            <path d="M24 8 Q16 12 16 22 Q16 34 24 38 Q32 34 32 22 Q32 12 24 8Z"/>
+                            <path d="M20 20 L22 24 L28 18"/>
+                            <path d="M16 38 Q24 44 32 38"/>
+                        </svg>
+                    </div>
+                    <div class="signature-feature-text">
+                        <h4>No Added Preservatives</h4>
+                        <p>Pure spices, no fillers, no artificial colours, just clean goodness.</p>
+                    </div>
+                </div>
+                <div class="signature-feature">
+                    <div class="signature-feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="#c46840" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 20 Q14 14 18 10"/>
+                            <path d="M24 18 Q22 12 26 8"/>
+                            <path d="M32 20 Q34 14 30 10"/>
+                            <path d="M10 24 Q10 40 24 40 Q38 40 38 24"/>
+                            <ellipse cx="24" cy="24" rx="14" ry="3"/>
+                            <path d="M14 30 Q20 28 26 30 Q32 28 38 30"/>
+                        </svg>
+                    </div>
+                    <div class="signature-feature-text">
+                        <h4>Rich Aroma</h4>
+                        <p>Carefully sourced spices that bring warmth, depth and irresistible aroma.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="signature-cta">
+                <a href="shop.html" class="btn-primary">
+                    Shop All Masalas
+                    <span class="arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bestsellers -->
+    <section class="bestsellers-section">
+        <img src="images/branches.png" alt="" class="branch-decor branch-decor-tr" aria-hidden="true">
+
+        <div class="container">
+            <div class="bestsellers-top">
+                <div class="bestsellers-intro">
+                    <h2 class="bestsellers-title">Bestsellers</h2>
+                    <svg class="bestsellers-squiggle" viewBox="0 0 100 12" fill="none" aria-hidden="true">
+                        <path d="M2 6c10-8 20 8 30 0s20 8 30 0s15 8 16 0s15 8 20 0" stroke="#e8734a" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                    <p class="bestsellers-desc">Handpicked favourites loved by our customers for everyday cooking.</p>
+                </div>
+                <div class="bestsellers-controls">
+                    <button class="filter-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+                        Filter
+                    </button>
+                    <button class="sort-btn">
+                        Sort: Popular
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="products-grid">
+                <article class="product-card">
+                    <div class="product-card-img">
+                        <img src="images/1.png" alt="Satyasee Turmeric Powder" loading="lazy" decoding="async">
+                        <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-info">
+                            <h4 class="product-card-name">Turmeric Powder</h4>
+                            <p class="product-card-price">₹149</p>
+                            <div class="product-card-tags"><span class="tag">Immunity</span><span class="tag">Anti-Inflammatory</span></div>
+                        </div>
+                        <button class="add-btn" aria-label="Add to cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-card-img">
+                        <img src="images/2.png" alt="Satyasee Red Chilli Powder" loading="lazy" decoding="async">
+                        <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-info">
+                            <h4 class="product-card-name">Red Chilli Powder</h4>
+                            <p class="product-card-price">₹149</p>
+                            <div class="product-card-tags"><span class="tag">Spicy</span><span class="tag">Rich Colour</span></div>
+                        </div>
+                        <button class="add-btn" aria-label="Add to cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-card-img">
+                        <img src="images/3.png" alt="Satyasee Coriander Powder" loading="lazy" decoding="async">
+                        <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-info">
+                            <h4 class="product-card-name">Coriander Powder</h4>
+                            <p class="product-card-price">₹129</p>
+                            <div class="product-card-tags"><span class="tag">Aromatic</span><span class="tag">Digestive</span></div>
+                        </div>
+                        <button class="add-btn" aria-label="Add to cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-card-img">
+                        <img src="images/4.png" alt="Satyasee Garam Masala" loading="lazy" decoding="async">
+                        <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-info">
+                            <h4 class="product-card-name">Garam Masala</h4>
+                            <p class="product-card-price">₹159</p>
+                            <div class="product-card-tags"><span class="tag">Aromatic</span><span class="tag">Warmth</span></div>
+                        </div>
+                        <button class="add-btn" aria-label="Add to cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-card-img">
+                        <img src="images/5.png" alt="Satyasee Kitchen King Masala" loading="lazy" decoding="async">
+                        <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-info">
+                            <h4 class="product-card-name">Kitchen King Masala</h4>
+                            <p class="product-card-price">₹159</p>
+                            <div class="product-card-tags"><span class="tag">Versatile</span><span class="tag">Multi-Purpose</span></div>
+                        </div>
+                        <button class="add-btn" aria-label="Add to cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-card-img">
+                        <img src="images/6.png" alt="Satyasee Biryani Masala" loading="lazy" decoding="async">
+                        <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-info">
+                            <h4 class="product-card-name">Biryani Masala</h4>
+                            <p class="product-card-price">₹169</p>
+                            <div class="product-card-tags"><span class="tag">Authentic</span><span class="tag">Restaurant Style</span></div>
+                        </div>
+                        <button class="add-btn" aria-label="Add to cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us — Rooted in India -->
+    <section class="rooted-section">
+        <div class="container">
+            <div class="rooted-layout">
+                <div class="rooted-content">
+                    <p class="rooted-label">🌿 Why Choose Satyasee</p>
+                    <h2 class="rooted-title">Rooted in India.<br><em>Crafted for<br>Real Kitchens.</em></h2>
+                    <p class="rooted-desc">At Satyasee, we bring you the purest spices, handpicked from trusted farms across India and carefully ground to lock in their natural oils, aroma and flavour.</p>
+
+                    <div class="rooted-points">
+                        <div class="rooted-point">
+                            <div class="rooted-point-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="#5a8f4e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M24 8 Q16 12 16 22 Q16 34 24 38 Q32 34 32 22 Q32 12 24 8Z"/>
+                                    <path d="M20 20 L22 24 L28 18"/>
+                                    <path d="M24 38 V44"/>
+                                    <path d="M20 44 H28"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>100% Natural</h4>
+                                <p>Pure spices, nothing artificial.</p>
+                            </div>
+                        </div>
+                        <div class="rooted-point">
+                            <div class="rooted-point-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="#c46840" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M24 6 Q20 10 18 16"/>
+                                    <path d="M24 6 Q28 10 30 16"/>
+                                    <path d="M21 14 Q18 14 17 11"/>
+                                    <path d="M27 14 Q30 14 31 11"/>
+                                    <ellipse cx="24" cy="22" rx="14" ry="3"/>
+                                    <path d="M10 22 Q10 38 24 38 Q38 38 38 22"/>
+                                    <path d="M34 10 L30 16"/>
+                                    <circle cx="36" cy="8" r="2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Freshly Ground in Small Batches</h4>
+                                <p>Maximum aroma, maximum flavour.</p>
+                            </div>
+                        </div>
+                        <div class="rooted-point">
+                            <div class="rooted-point-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="#7a5cad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M24 4 L24 8"/>
+                                    <path d="M24 8 Q16 12 16 22 Q16 34 24 38 Q32 34 32 22 Q32 12 24 8Z"/>
+                                    <path d="M18 22 H30"/>
+                                    <path d="M18 28 H30"/>
+                                    <path d="M16 38 Q24 44 32 38"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>No Artificial Colors or Preservatives</h4>
+                                <p>Clean, safe and wholesome.</p>
+                            </div>
+                        </div>
+                        <div class="rooted-point">
+                            <div class="rooted-point-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="#c9a030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M24 10 C24 10 14 16 14 26 C14 32 18 36 24 36 C30 36 34 32 34 26 C34 16 24 10 24 10Z"/>
+                                    <circle cx="24" cy="26" r="3"/>
+                                    <path d="M24 36 V42"/>
+                                    <path d="M20 42 H28"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Sourced from Trusted Farms</h4>
+                                <p>Ethical sourcing, better flavour.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn-primary">
+                        Our Story
+                        <span class="arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                    </a>
+                </div>
+                <div class="rooted-image">
+                    <img src="images/root.png" alt="Satyasee spices with mortar and pestle — turmeric, coriander and red chilli pouches" class="rooted-img" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Bar -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="proof-stat">
+                <div class="proof-stat-icon">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="#e8734a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M24 10 C24 10 14 16 14 24 C14 30 18 34 24 34 C30 34 34 30 34 24 C34 16 24 10 24 10Z"/>
+                        <path d="M18 24 C18 24 14 20 14 14"/>
+                        <path d="M30 24 C30 24 34 20 34 14"/>
+                    </svg>
+                </div>
+                <div>
+                    <p class="proof-stat-label">Loved by</p>
+                    <h3 class="proof-stat-number">20,000+</h3>
+                    <p class="proof-stat-sub">Home Cooks</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="rating-text">4.8/5 from 2,500+ reviews</p>
+                <blockquote>"The aroma is incredible! Satyasee spices make every dish taste like it's made with love and tradition."</blockquote>
+                <p class="author">— Priya S., Bengaluru</p>
+            </div>
+            <div class="proof-badges">
+                <div class="proof-badge">
+                    <div class="proof-badge-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="#5a8f4e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M24 6 Q18 10 18 18 V28 Q18 34 24 38 Q30 34 30 28 V18 Q30 10 24 6Z"/>
+                            <path d="M20 22 L22 26 L28 20"/>
+                        </svg>
+                    </div>
+                    <h4>Lab Tested<br>for Purity</h4>
+                </div>
+                <div class="proof-badge">
+                    <div class="proof-badge-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="#5a8f4e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 18 H34 V38 Q34 42 24 42 Q14 42 14 38 Z"/>
+                            <path d="M14 24 H34"/>
+                            <path d="M20 12 V18"/>
+                            <path d="M28 12 V18"/>
+                            <circle cx="24" cy="32" r="3"/>
+                        </svg>
+                    </div>
+                    <h4>Hygienically<br>Packed</h4>
+                </div>
+                <div class="proof-badge">
+                    <div class="proof-badge-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="#5a8f4e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="24" cy="24" r="16"/>
+                            <path d="M16 24 L20 28 L32 18"/>
+                        </svg>
+                    </div>
+                    <h4>100% Safe<br>&amp; Trusted</h4>
+                </div>
+                <div class="proof-badge">
+                    <div class="proof-badge-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="#5a8f4e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M24 6 L24 10"/>
+                            <path d="M24 10 Q14 14 14 24 Q14 36 24 42 Q34 36 34 24 Q34 14 24 10Z"/>
+                            <path d="M18 28 Q24 32 30 28"/>
+                            <path d="M20 22 Q22 18 24 22 Q26 18 28 22"/>
+                        </svg>
+                    </div>
+                    <h4>Proudly<br>Made in India</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3 class="brand-name">Satyasee</h3>
+                    <p>Authentic Indian spices, rooted in tradition, crafted for modern kitchens. From our farms to your kitchen.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <a href="shop.html">All Spices</a>
+                    <a href="#">Bestsellers</a>
+                    <a href="#">New Arrivals</a>
+                    <a href="#">Combo Packs</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="#">Our Story</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Recipes</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <a href="#">FAQ</a>
+                    <a href="#">Shipping</a>
+                    <a href="#">Returns</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Satyasee. All rights reserved. Made with ❤️ in India.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
