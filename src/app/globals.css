@@ -1,0 +1,11 @@
+/* Global app styles — composed from original site stylesheets */
+@import "../styles/style.css";
+@import "../styles/product.css";
+@import "../styles/login.css";
+@import "../styles/contact.css";
+
+/* next/font variables map onto existing CSS custom properties */
+:root {
+  --font-heading: var(--font-playfair), "Playfair Display", serif;
+  --font-body: var(--font-inter), "Inter", sans-serif;
+}
