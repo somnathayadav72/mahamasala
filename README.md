@@ -57,6 +57,22 @@ src/
 public/images/         # Static assets
 ```
 
+## Social / SEO preview
+
+Share previews (WhatsApp, iMessage, Slack, LinkedIn, X, Facebook) use a branded Open Graph image with the Satyasee leaf logo.
+
+**Important for production:** set your real domain so preview image URLs resolve correctly:
+
+```bash
+# .env.local or host env
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
+
+After deploy, test with:
+- [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/)
+- [Twitter Card Validator](https://cards-dev.twitter.com/validator)
+- Or open `/opengraph-image` on your site to view the card image
+
 ## Notes
 
 - Frontend only — no APIs, database, or server auth.

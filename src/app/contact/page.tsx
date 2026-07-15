@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/forms/ContactForm";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us",
+  description: `Get in touch with ${siteConfig.name}. Questions, feedback, wholesale — we typically respond within 24 hours. ${siteConfig.email} · ${siteConfig.phone}`,
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: `Contact Us - ${siteConfig.name}`,
+    description: "Have a question or feedback? We'd love to hear from you.",
+    url: "/contact",
+  },
 };
 
 export default function ContactPage() {

@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import LoginForm from "@/components/forms/LoginForm";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Login",
+  description: `Log in to your ${siteConfig.name} account to continue your spice journey.`,
+  robots: { index: false, follow: false },
+  alternates: { canonical: "/login" },
 };
 
 export default function LoginPage() {
